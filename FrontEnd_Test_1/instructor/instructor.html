@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AcademIQ — Schedule Smarter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/common.css">
+<link rel="stylesheet" href="instructor.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     INSTRUCTOR DASHBOARD
+══════════════════════════════════════ -->
+<div id="page-instructor" class="page active">
+  <div class="dashboard">
+    <nav class="topnav">
+      <div class="topnav-brand" onclick="showInstructorTab('overview', document.querySelector('#page-instructor .topnav-link'))" title="Go to Overview">Academ<span>IQ</span></div>
+      <div class="topnav-sep"></div>
+      <div class="topnav-links">
+        <button class="topnav-link active" onclick="showInstructorTab('overview', this)">Overview</button>
+        <button class="topnav-link" onclick="showInstructorTab('timetable', this)">My Timetable</button>
+        <button class="topnav-link" onclick="showInstructorTab('availability', this)">Availability</button>
+        <button class="topnav-link" onclick="showInstructorTab('students', this)">Students</button>
+        <button class="topnav-link" onclick="showInstructorTab('exams', this)">Exams</button>
+      </div>
+      <div class="topnav-right">
+        <span class="badge-pill">INSTRUCTOR</span>
+        <button class="notif-btn">🔔<span class="notif-dot"></span></button>
+        <div class="avatar">RP</div>
+        <button class="btn-logout" onclick="logout()">Sign Out</button>
+      </div>
+    </nav>
+
+    <!-- Overview -->
+    <div class="subpage active" id="ins-overview">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Dr. Riya Patel 👋</h2>
+          <p>Computer Science · Spring 2025</p>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">Assigned Courses</div>
+            <div class="stat-value">3</div>
+            <div class="stat-sub">CS301, CS410, CS201</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Students</div>
+            <div class="stat-value">87</div>
+            <div class="stat-sub">Across all sections</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Weekly Hours</div>
+            <div class="stat-value">12</div>
+            <div class="stat-sub">Contact hours</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Exams This Month</div>
+            <div class="stat-value">4</div>
+            <div class="stat-sub">2 midterms · 2 finals</div>
+          </div>
+        </div>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-head"><h3>Today's Classes</h3><span class="tag">Thu, Mar 5</span></div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--olive-faint);border-radius:8px">
+                  <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);min-width:60px">09:00 AM</div>
+                  <div><div style="font-weight:600;font-size:13px">CS301 – Section A</div><div style="font-size:11px;color:var(--muted)">Room B204 · 28 students</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--olive-faint);border-radius:8px">
+                  <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);min-width:60px">02:00 PM</div>
+                  <div><div style="font-weight:600;font-size:13px">CS410 – Section B</div><div style="font-size:11px;color:var(--muted)">Room B101 · 31 students</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Upcoming Exam Duties</h3><span class="tag">Spring 2025</span></div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;justify-content:space-between;padding:10px;border:1px solid var(--border);border-radius:8px">
+                  <div><div style="font-weight:600;font-size:13px">CS301 Midterm</div><div style="font-size:11px;color:var(--muted)">Mar 13 · Invigilator · Hall A</div></div>
+                  <span class="exam-type-badge exam-midterm">MID</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:10px;border:1px solid var(--border);border-radius:8px">
+                  <div><div style="font-weight:600;font-size:13px">CS410 Midterm</div><div style="font-size:11px;color:var(--muted)">Mar 21 · Invigilator · Hall B</div></div>
+                  <span class="exam-type-badge exam-midterm">MID</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timetable -->
+    <div class="subpage" id="ins-timetable">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Teaching Timetable</h2>
+          <p>Spring 2025 – Dr. Patel's schedule</p>
+        </div>
+        <div class="timetable-wrap">
+          <table class="timetable">
+            <thead>
+              <tr><th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="time-col">08:00–09:00</td>
+                <td><div class="tt-class">CS301-A<br>B204</div></td>
+                <td class="tt-empty">—</td>
+                <td><div class="tt-class">CS301-A<br>B204</div></td>
+                <td class="tt-empty">—</td>
+                <td class="tt-empty">—</td>
+              </tr>
+              <tr>
+                <td class="time-col">09:00–10:00</td>
+                <td class="tt-empty">—</td>
+                <td><div class="tt-class">CS410-B<br>B101</div></td>
+                <td class="tt-empty">—</td>
+                <td><div class="tt-class">CS410-B<br>B101</div></td>
+                <td class="tt-empty">—</td>
+              </tr>
+              <tr>
+                <td class="time-col">10:00–11:00</td>
+                <td><div class="tt-lab">CS301 Lab<br>Lab 3</div></td>
+                <td class="tt-empty">—</td>
+                <td class="tt-empty">—</td>
+                <td class="tt-empty">—</td>
+                <td><div class="tt-class">CS201-A<br>A101</div></td>
+              </tr>
+              <tr>
+                <td class="time-col">11:00–12:00</td>
+                <td class="tt-empty">—</td>
+                <td class="tt-empty">Office Hours</td>
+                <td class="tt-empty">—</td>
+                <td class="tt-empty">Office Hours</td>
+                <td class="tt-empty">—</td>
+              </tr>
+              <tr>
+                <td class="time-col">14:00–15:00</td>
+                <td><div class="tt-class">CS201-A<br>A101</div></td>
+                <td class="tt-empty">—</td>
+                <td><div class="tt-class">CS201-A<br>A101</div></td>
+                <td class="tt-empty">—</td>
+                <td class="tt-empty">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Availability -->
+    <div class="subpage" id="ins-availability">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Availability Grid</h2>
+          <p>Manage your teaching availability for the week</p>
+        </div>
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-body">
+            <div class="avail-grid">
+              <div class="avail-header">Time</div>
+              <div class="avail-header">Mon</div>
+              <div class="avail-header">Tue</div>
+              <div class="avail-header">Wed</div>
+              <div class="avail-header">Thu</div>
+              <div class="avail-header">Fri</div>
+              <div class="avail-header" style="background:var(--surface);color:var(--muted)">08–09</div>
+              <div class="avail-cell busy">Busy</div><div class="avail-cell avail">Free</div><div class="avail-cell busy">Busy</div><div class="avail-cell avail">Free</div><div class="avail-cell avail">Free</div>
+              <div class="avail-header" style="background:var(--surface);color:var(--muted)">09–10</div>
+              <div class="avail-cell avail">Free</div><div class="avail-cell busy">Busy</div><div class="avail-cell avail">Free</div><div class="avail-cell busy">Busy</div><div class="avail-cell avail">Free</div>
+              <div class="avail-header" style="background:var(--surface);color:var(--muted)">10–11</div>
+              <div class="avail-cell busy">Busy</div><div class="avail-cell avail">Free</div><div class="avail-cell avail">Free</div><div class="avail-cell avail">Free</div><div class="avail-cell busy">Busy</div>
+              <div class="avail-header" style="background:var(--surface);color:var(--muted)">11–12</div>
+              <div class="avail-cell avail">Free</div><div class="avail-cell partial">Office</div><div class="avail-cell avail">Free</div><div class="avail-cell partial">Office</div><div class="avail-cell avail">Free</div>
+              <div class="avail-header" style="background:var(--surface);color:var(--muted)">13–14</div>
+              <div class="avail-cell avail">Free</div><div class="avail-cell avail">Free</div><div class="avail-cell avail">Free</div><div class="avail-cell avail">Free</div><div class="avail-cell avail">Free</div>
+              <div class="avail-header" style="background:var(--surface);color:var(--muted)">14–15</div>
+              <div class="avail-cell busy">Busy</div><div class="avail-cell avail">Free</div><div class="avail-cell busy">Busy</div><div class="avail-cell avail">Free</div><div class="avail-cell avail">Free</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;font-size:12px;color:var(--muted)">
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;background:rgba(76,88,62,0.15);border-radius:3px;display:inline-block"></span>Free / Available</span>
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;background:rgba(184,76,76,0.12);border-radius:3px;display:inline-block"></span>Busy / Teaching</span>
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;background:rgba(201,168,76,0.18);border-radius:3px;display:inline-block"></span>Office Hours</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Students -->
+    <div class="subpage" id="ins-students">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>My Students</h2>
+          <p>All enrolled students across your courses</p>
+        </div>
+        <div class="card"><div class="card-body" style="padding:0">
+          <table class="exam-table">
+            <thead><tr><th>Student</th><th>ID</th><th>Course</th><th>Section</th><th>Attendance</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Jamie Smith</strong></td><td style="font-family:'DM Mono',monospace;font-size:12px">STU-2024-0041</td><td>CS301</td><td>A</td><td><span style="color:var(--success);font-weight:600">92%</span></td></tr>
+              <tr><td><strong>Alex Johnson</strong></td><td style="font-family:'DM Mono',monospace;font-size:12px">STU-2024-0055</td><td>CS301</td><td>A</td><td><span style="color:var(--success);font-weight:600">88%</span></td></tr>
+              <tr><td><strong>Priya Nair</strong></td><td style="font-family:'DM Mono',monospace;font-size:12px">STU-2024-0063</td><td>CS410</td><td>B</td><td><span style="color:var(--gold);font-weight:600">74%</span></td></tr>
+              <tr><td><strong>Sam Torres</strong></td><td style="font-family:'DM Mono',monospace;font-size:12px">STU-2024-0077</td><td>CS410</td><td>B</td><td><span style="color:var(--danger);font-weight:600">60%</span></td></tr>
+              <tr><td><strong>Jordan Lee</strong></td><td style="font-family:'DM Mono',monospace;font-size:12px">STU-2024-0082</td><td>CS201</td><td>A</td><td><span style="color:var(--success);font-weight:600">95%</span></td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Exams -->
+    <div class="subpage" id="ins-exams">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Exam Duties</h2>
+          <p>Midterm & Final assignments · Spring 2025</p>
+        </div>
+        <div class="sec-tabs">
+          <button class="sec-tab active" onclick="switchTab('ins-exam', 'mid', this)">Midterms</button>
+          <button class="sec-tab" onclick="switchTab('ins-exam', 'fin', this)">Finals</button>
+        </div>
+        <div id="ins-exam-mid" class="tab-section active">
+          <div class="card"><div class="card-body" style="padding:0">
+            <table class="exam-table">
+              <thead><tr><th>Course</th><th>Date</th><th>Time</th><th>Hall</th><th>Role</th><th>Type</th></tr></thead>
+              <tbody>
+                <tr><td><strong>CS301</strong></td><td>Mar 13</td><td>10:00–12:00</td><td>Hall A</td><td>Setter + Invigilator</td><td><span class="exam-type-badge exam-midterm">MIDTERM</span></td></tr>
+                <tr><td><strong>CS410</strong></td><td>Mar 21</td><td>14:00–16:00</td><td>Hall B</td><td>Invigilator</td><td><span class="exam-type-badge exam-midterm">MIDTERM</span></td></tr>
+              </tbody>
+            </table>
+          </div></div>
+        </div>
+        <div id="ins-exam-fin" class="tab-section">
+          <div class="card"><div class="card-body" style="padding:0">
+            <table class="exam-table">
+              <thead><tr><th>Course</th><th>Date</th><th>Time</th><th>Hall</th><th>Role</th><th>Type</th></tr></thead>
+              <tbody>
+                <tr><td><strong>CS301</strong></td><td>May 20</td><td>09:00–12:00</td><td>Hall A</td><td>Setter + Invigilator</td><td><span class="exam-type-badge exam-final">FINAL</span></td></tr>
+                <tr><td><strong>CS201</strong></td><td>May 26</td><td>10:00–13:00</td><td>Hall C</td><td>Invigilator</td><td><span class="exam-type-badge exam-final">FINAL</span></td></tr>
+                <tr><td><strong>CS410</strong></td><td>May 27</td><td>13:00–16:00</td><td>Hall D</td><td>Setter</td><td><span class="exam-type-badge exam-final">FINAL</span></td></tr>
+              </tbody>
+            </table>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="instructor.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Admin Dashboard — system management, timetables, classrooms, exams">
+  <title>Smart Class — Admin Dashboard</title>
+  <link rel="icon" type="image/png" href="../public/Icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+  <div id="page-admin" class="page active">
+  <div class="dashboard">
+
+    <!-- Top Navigation -->
+    <nav class="topnav">
+      <div class="topnav-brand" id="nav-brand" title="Go to Overview">
+        Smart<span> Class</span>
+      </div>
+      <div class="topnav-sep"></div>
+      <div class="topnav-links" id="nav-tabs"></div>
+      
+      <div class="topnav-right">
+        <span class="badge-pill">ADMIN</span>
+        
+        <!-- Notifications -->
+        <div class="notif-wrapper">
+          <button class="notif-btn" aria-label="Notifications">
+            !<span class="notif-dot"></span>
+          </button>
+          <div class="notif-dropdown">
+            <div class="dropdown-label">Notifications</div>
+            <div class="notif-item">
+              <strong>Complaint:</strong> "Need more time for grading." - Dr. Kim
+            </div>
+            <div class="notif-item">
+              <strong>Alert:</strong> Hall C capacity insufficient.
+            </div>
+          </div>
+        </div>
+        
+        <!-- User Avatar -->
+        <div class="avatar-wrapper">
+          <div class="avatar" id="avatar-initials"></div>
+          <div class="avatar-dropdown" id="avatar-dropdown"></div>
+        </div>
+        
+        <!-- Logout -->
+        <button class="btn-logout" id="btn-logout">Sign Out</button>
+      </div>
+    </nav>
+
+    <!-- Loading Bar -->
+    <div id="loading-bar" style="margin: 16px 24px 0; padding: 10px 14px; border-radius: 10px; background: var(--surface); border: 1.5px solid var(--border); color: var(--muted); font-size: 12px;">
+      Loading latest admin data...
+    </div>
+
+    <!-- Overview Tab -->
+    <div class="subpage active" id="tab-overview">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Admin Dashboard</h2>
+          <p>Smart Class - <span class="dynamic-semester" id="adm-semester"></span> Academic Management</p>
+        </div>
+        <div class="stats-row" id="adm-stats"></div>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-head">
+              <h3>System Alerts</h3>
+              <span class="tag" id="adm-alert-tag" style="background: rgba(184,76,76,0.1); color: var(--danger);"></span>
+            </div>
+            <div class="card-body" id="adm-alerts-body"></div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <h3>Quick Actions</h3>
+            </div>
+            <div class="card-body" id="adm-quick"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timetables Tab -->
+    <div class="subpage" id="tab-timetables">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Master Timetable</h2>
+          <p>All sections - <span class="dynamic-semester"></span> - Interactive View</p>
+        </div>
+        <div id="adm-tt-area"></div>
+      </div>
+    </div>
+
+    <!-- Instructors Tab -->
+    <div class="subpage" id="tab-instructors">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Instructors</h2>
+          <p>Teaching hours - <span class="dynamic-semester"></span></p>
+        </div>
+        <div class="instructor-list" id="adm-inst-list"></div>
+      </div>
+    </div>
+
+    <!-- Classrooms Tab -->
+    <div class="subpage" id="tab-classrooms">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Classroom Availability</h2>
+          <p style="color: var(--olive); font-size: 13px; font-weight: 500;">
+            Live room status - Today, <span id="adm-today-date"></span>
+          </p>
+        </div>
+        <div class="stats-row" style="margin-bottom: 20px;" id="adm-room-stats"></div>
+        <div class="room-controls" id="adm-room-controls"></div>
+        <div id="adm-room-grid"></div>
+        <div id="adm-reservations-section" style="margin-top: 40px;"></div>
+      </div>
+    </div>
+
+    <!-- Exams Tab -->
+    <div class="subpage" id="tab-exams">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Exam Schedule Management</h2>
+          <p>Configure midterm &amp; final timetables - <span class="dynamic-semester"></span></p>
+        </div>
+        <div class="sec-tabs">
+          <button class="sec-tab active" data-et="mid">Midterm Schedule</button>
+          <button class="sec-tab" data-et="fin">Final Schedule</button>
+        </div>
+        <div class="tab-section active" id="adm-exam-mid"></div>
+        <div class="tab-section" id="adm-exam-fin"></div>
+      </div>
+    </div>
+
+    <!-- Feedbacks Tab -->
+    <div class="subpage" id="tab-feedbacks">
+      <div class="content-area">
+        <div class="page-header">
+          <h2>Instructor Feedbacks &amp; Complaints</h2>
+          <p>Review and respond to instructor requests</p>
+        </div>
+        <div id="adm-feedbacks-body"></div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+  <!-- Exam Modal -->
+  <div id="exam-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:2000;align-items:center;justify-content:center">
+  <div id="exam-modal" style="background:#fff;border-radius:16px;padding:32px;width:100%;max-width:500px;margin:20px;box-shadow:0 20px 60px rgba(0,0,0,0.2);font-family:'DM Sans',sans-serif" onclick="event.stopPropagation()">
+    
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--ink);margin-bottom:4px">Add Exam Slot</h3>
+    
+    <p id="exam-modal-subtitle" style="color:var(--muted);font-size:13px;margin-bottom:24px"></p>
+    
+    <div id="exam-modal-fields"></div>
+    
+    <p id="exam-modal-error" style="display:none;color:var(--danger);font-size:12px;margin-bottom:12px"></p>
+    
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px">
+      <button type="button" id="exam-modal-cancel" style="padding:10px 20px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer">
+        Cancel
+      </button>
+      
+      <button type="button" id="exam-modal-add" style="padding:10px 20px;border:none;border-radius:8px;background:var(--olive);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer">
+        Add Slot
+      </button>
+    </div>
+    
+  </div>
+</div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/semester.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

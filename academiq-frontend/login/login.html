@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AcademIQ — Sign in to access your academic dashboard">
+  <title>Sign In</title>
+  <link rel="icon" type="image/png" href="../public/Icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+  <div id="page-login" class="page active">
+    <div class="login-left">
+      <div class="brand-logo">
+        
+        <div class="logo-icon"></div>
+        <div class="brand-name">Smart<span> Class</span></div>
+      </div>
+      <div class="login-hero">
+        <div class="status-badge">
+          <span class="status-dot"></span>System online  <span id="semester-label"></span>
+        </div>
+        <h1>Schedule<br>smarter<br><em>Learn better</em></h1>
+        <p>A unified platform for academic scheduling - timetables, classrooms, instructors and exams, all in one place.</p>
+      </div>
+      <div class="login-features">
+        <div class="login-feature"><span class="login-feature-dot"></span>Smart timetable management</div>
+        <div class="login-feature"><span class="login-feature-dot"></span>Classroom availability tracking</div>
+        <div class="login-feature"><span class="login-feature-dot"></span>Instructor scheduling &amp; load</div>
+        <div class="login-feature"><span class="login-feature-dot"></span>Midterm &amp; final exam planning</div>
+      </div>
+    </div>
+
+    <div class="login-right">
+      <div class="login-form-box">
+        <h2>Welcome back</h2>
+        <p>Sign in to access your dashboard</p>
+
+        <form id="login-form">
+          <div class="role-tabs">
+            <button type="button" class="role-tab active" data-role="student">Student</button>
+            <button type="button" class="role-tab" data-role="instructor">Instructor</button>
+          </div>
+
+          <div id="student-field" class="form-group">
+            <label class="form-label">Student Username</label>
+            <div class="input-wrap">
+              <span class="input-icon"></span>
+              <input id="student-id-input" type="text" placeholder="Enter student username">
+            </div>
+          </div>
+
+          <div id="instructor-field" class="form-group" style="display:none">
+            <label class="form-label">Instructor ID</label>
+            <div class="input-wrap">
+              <span class="input-icon"></span>
+              <input id="instructor-id-input" type="text" placeholder="Enter instructor username">
+            </div>
+          </div>
+
+          <div id="main-password-group" class="form-group">
+            <label class="form-label">Password</label>
+            <div class="input-wrap">
+              <span class="input-icon"></span>
+              <input id="main-password-input" type="password" placeholder="Enter password">
+            </div>
+          </div>
+
+          <div id="main-extras" class="form-row">
+            <label class="checkbox-wrap">
+              <input type="checkbox">
+              <span>REMEMBER ME</span>
+            </label>
+            <a href="../forgot-password/forgot-password.html" class="forgot-link">Forgot password?</a>
+          </div>
+          <button id="main-submit-btn" class="btn-primary" type="submit">Sign In →</button>
+        </form>
+
+        <div class="admin-help">
+          <a href="#" id="admin-toggle" style="font-size:12px;color:var(--muted);text-decoration:none;opacity:0.65;transition:opacity 0.2s">Admin sign-in</a>
+          <div id="admin-section" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+            <div class="form-group">
+              <label class="form-label">Admin Username</label>
+              <div class="input-wrap">
+                <span class="input-icon"></span>
+                <input id="admin-username-input" type="text" placeholder="Enter admin username">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:14px">
+              <label class="form-label">Admin Password</label>
+              <div class="input-wrap">
+                <span class="input-icon"></span>
+                <input id="admin-password-input" type="password" placeholder="Enter password">
+              </div>
+            </div>
+            <button id="admin-submit-btn" class="btn-primary" type="button" style="margin-bottom:0">Sign In as Admin →</button>
+          </div>
+          <div id="login-status" class="login-status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/semester.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>

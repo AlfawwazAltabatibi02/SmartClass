@@ -1,0 +1,108 @@
+﻿/* Admin role styling */
+#page-admin .badge-pill {
+  background: #f6e1bd;
+  color: #5a4110;
+}
+
+#page-admin .avatar {
+  background: #7a5c20;
+  border-color: #e3c987;
+}
+
+#page-admin .stat-card::before {
+  background: #7a5c20;
+}
+
+#page-admin .page-header h2 {
+  letter-spacing: 0.01em;
+}
+
+/* Antigravity timetable */
+@keyframes conflict-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(239, 68, 68, 0.85),
+      0 4px 14px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 18px rgba(239, 68, 68, 0),
+      0 4px 14px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.conflict-pulse {
+  animation: conflict-pulse 1.4s ease-in-out infinite !important;
+}
+
+.ag-card {
+  position: absolute;
+  will-change: transform;
+  cursor: grab;
+  transform-origin: center center;
+  user-select: none;
+  touch-action: none;
+  -webkit-user-select: none;
+}
+
+.ag-card:active {
+  cursor: grabbing;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Classroom stat card top-bar colors */
+#adm-stat-inuse::before {
+  background: var(--danger);
+}
+
+#adm-stat-avail::before {
+  background: var(--success);
+}
+
+#adm-stat-cap::before {
+  background: var(--gold);
+}
+
+#adm-stat-maintain::before {
+  background: #1e3a5f;
+}
+
+/* LED Status Indicators */
+.avail-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.avail-dot.dot-green {
+  background-color: #1bbb73;
+  box-shadow: 0 0 8px rgba(27, 187, 115, 0.5);
+}
+
+.avail-dot.dot-red {
+  background-color: #e74c3c;
+  box-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
+}
+
+.avail-dot.dot-yellow {
+  background-color: #f39c12;
+  box-shadow: 0 0 8px rgba(243, 156, 18, 0.5);
+}
+
+.avail-dot.dot-gray {
+  background-color: #95a5a6;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}

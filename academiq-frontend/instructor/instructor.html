@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Instructor Dashboard — schedule, students, classrooms, feedback">
+  <title>Instructor Dashboard</title>
+    <link rel="icon" type="image/png" href="../public/Icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/instructor.css">
+</head>
+<body>
+  <div id="page-instructor" class="page active">
+    <div class="dashboard">
+      <nav class="topnav">
+        <div class="topnav-brand" id="nav-brand" title="Go to Overview">Smart<span> Class</span></div>
+        <div class="topnav-sep"></div>
+        <div class="topnav-links" id="nav-tabs"></div>
+        <div class="topnav-right">
+          <span class="badge-pill">INSTRUCTOR</span>
+          <div class="notif-wrapper"><button class="notif-btn" aria-label="Notifications">!<span class="notif-dot"></span></button><div class="notif-dropdown"><div class="dropdown-label">Notifications</div><div class="notif-item"><strong>Admin response:</strong> "Will find cover for PHYS Lab."</div><div class="notif-item"><strong>Reminder:</strong> CS301 midterms start tomorrow.</div></div></div>
+          <div class="avatar-wrapper"><div class="avatar" id="avatar-initials"></div><div class="avatar-dropdown" id="avatar-dropdown"></div></div>
+          <button class="btn-logout" id="btn-logout">Sign Out</button>
+        </div>
+      </nav>
+      <div id="loading-bar" style="margin:16px 24px 0;padding:10px 14px;border-radius:10px;background:var(--surface);border:1.5px solid var(--border);color:var(--muted);font-size:12px">Loading latest instructor data...</div>
+
+      <div class="subpage active" id="tab-overview">
+        <div class="content-area"><div class="page-header"><h2 id="ins-greeting"></h2><p id="ins-subtitle"></p></div><div class="stats-row" id="ins-stats"></div>
+            <div class="cards-grid"><div class="card"><div class="card-head"><h3>Today's Classes</h3><span class="tag" id="ins-today-tag"></span></div><div class="card-body" id="ins-today-body"></div></div><div class="card"><div class="card-head"><h3>Upcoming Exam Duties</h3><span class="tag" id="ins-exam-tag"></span></div>
+              <div class="card-body">
+                <div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;padding:10px;border:1px solid var(--border);border-radius:8px"><div><div style="font-weight:600;font-size:13px">CS301 Midterm</div><div style="font-size:11px;color:var(--muted)">Mar 13 - Invigilator - Hall A</div></div><span class="exam-type-badge exam-midterm">MID</span></div><div style="display:flex;justify-content:space-between;padding:10px;border:1px solid var(--border);border-radius:8px"><div><div style="font-weight:600;font-size:13px">CS410 Midterm</div><div style="font-size:11px;color:var(--muted)">Mar 21 - Invigilator - Hall B</div></div><span class="exam-type-badge exam-midterm">MID</span></div></div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+      <div class="subpage" id="tab-timetable"><div class="content-area"><div class="page-header"><h2>Teaching Timetable</h2><p id="ins-tt-sub"></p></div><div class="timetable-wrap"><table class="timetable" id="ins-timetable"><thead><tr><th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th></tr></thead><tbody id="ins-tt-body"></tbody></table></div></div></div>
+      <div class="subpage" id="tab-availability">
+        <div class="content-area">
+          <div class="page-header"><h2>Availability</h2><p>Manage your teaching availability for the week</p>
+          </div>
+          <div class="card" style="margin-bottom:24px">
+            <div class="card-body" id="avail-grid-body"></div>
+          </div>
+        </div>
+      </div>
+      <div class="subpage" id="tab-students"><div class="content-area"><div class="page-header"><h2>My Students</h2><p>All enrolled students across your courses</p></div><div id="stu-controls" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;align-items:center"></div><div id="stu-grid-area"></div><div id="stu-no-results" style="display:none;text-align:center;padding:40px;color:var(--muted);font-size:14px">No students match your search.</div></div></div>
+      <div class="subpage" id="tab-classrooms"><div class="content-area"><div class="page-header"><h2>Classroom Availability</h2><p>Live room status · Today, <span id="ins-room-date"></span></p></div><div class="stats-row" style="margin-bottom:24px" id="ins-room-stats"></div><div class="room-controls" id="ins-room-controls"></div><div id="ins-room-grid"></div></div></div>
+      <div class="subpage" id="tab-exams"><div class="content-area"><div class="page-header"><h2>Exam Duties</h2><p id="ins-exam-sub"></p></div><div class="sec-tabs"><button class="sec-tab active" data-et="mid">Midterms</button><button class="sec-tab" data-et="fin">Finals</button></div><div class="tab-section active" id="ins-exam-mid"></div><div class="tab-section" id="ins-exam-fin"></div></div></div>
+      <div class="subpage" id="tab-feedback"><div class="content-area">
+        <div class="page-header"><h2>Feedback - Complaints</h2><p>Report classroom issues or send complaints to administration</p></div>
+
+        <!-- Sub-tabs for the two sections -->
+        <div class="sec-tabs" id="fb-sec-tabs">
+          <button class="sec-tab active" data-fb="issues">Classroom Issues</button>
+          <button class="sec-tab" data-fb="complaints">Complaints to Admin</button>
+        </div>
+
+        <!-- Section 1: Classroom Issues (existing) -->
+        <div class="fb-section active" id="fb-issues-section">
+          <div id="fb-toast" style="display:none;align-items:center;gap:12px;padding:14px 20px;background:rgba(58,125,90,0.12);border:1.5px solid rgba(58,125,90,0.35);border-radius:10px;margin-bottom:24px;color:var(--success);font-size:14px;font-weight:500">Feedback submitted. Thank you!</div>
+          <div class="card" style="max-width:720px" id="fb-form-card"></div>
+          <div style="margin-top:32px;max-width:720px"><h3 style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:14px">Recent Submissions</h3><div id="fb-history"></div></div>
+        </div>
+
+        <!-- Section 2: Complaints to Admin (new) -->
+        <div class="fb-section" id="fb-complaints-section">
+          <div id="complaint-toast" style="display:none;align-items:center;gap:12px;padding:14px 20px;background:rgba(58,125,90,0.12);border:1.5px solid rgba(58,125,90,0.35);border-radius:10px;margin-bottom:24px;color:var(--success);font-size:14px;font-weight:500">Complaint sent to admin successfully!</div>
+          <div class="card" style="max-width:720px" id="complaint-form-card"></div>
+          <div style="margin-top:32px;max-width:720px"><h3 style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:14px">My Complaints History</h3><div id="complaint-history"></div></div>
+        </div>
+
+      </div></div>
+    </div>
+  </div>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/semester.js"></script>
+  <script src="../js/instructor.js"></script>
+</body>
+</html>

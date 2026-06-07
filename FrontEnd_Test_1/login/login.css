@@ -1,0 +1,27 @@
+﻿/* Login page specific tweaks */
+#page-login .login-form-box {
+  max-width: 430px;
+}
+
+#page-login .status-badge {
+  letter-spacing: 0.02em;
+}
+
+#page-login .btn-primary {
+  box-shadow: 0 8px 18px rgba(50, 59, 41, 0.12);
+}
+
+#page-login .btn-primary:hover {
+  box-shadow: 0 10px 24px rgba(50, 59, 41, 0.2);
+}
+
+#page-login .forgot-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  #page-login { flex-direction: column; }
+  #page-login .login-left { width: 100%; padding: 36px 28px; min-height: auto; }
+  #page-login .login-right { padding: 36px 24px; }
+  #page-login .login-hero h1 { font-size: 36px; }
+}

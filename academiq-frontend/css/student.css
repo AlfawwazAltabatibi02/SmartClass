@@ -1,0 +1,18 @@
+﻿/* Student role styling */
+#page-student .badge-pill {
+  background: #d8edd8;
+  color: #244c2e;
+}
+
+#page-student .avatar {
+  background: #3f6f49;
+  border-color: #9bc59d;
+}
+
+#page-student .stat-card::before {
+  background: #3f6f49;
+}
+
+/* Fix timetable 6-day width alignment */
+table.timetable th:not(:first-child), table.timetable td:not(:first-child) { width: calc((100% - 110px) / 6) !important; text-align: center; }
+.timetable-wrap { overflow-x: auto; }

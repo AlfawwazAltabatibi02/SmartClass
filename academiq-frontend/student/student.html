@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AcademIQ Student Dashboard — timetable, exams, instructors">
+  <title>Student Dashboard</title>
+  <link rel="icon" type="image/png" href="../public/Icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/student.css">
+  <link rel="stylesheet" href="../css/ai-assistant.css">
+</head>
+<body>
+  <div id="page-student" class="page active">
+    <div class="dashboard">
+      <!-- Top Nav -->
+      <nav class="topnav">
+        <div class="topnav-brand" id="nav-brand" title="Go to Overview">Smart<span> Class</span></div>
+        <div class="topnav-sep"></div>
+        <div class="topnav-links" id="nav-tabs"></div>
+        <div class="topnav-right">
+          <span class="badge-pill">STUDENT</span>
+          <div class="notif-wrapper">
+            <button class="notif-btn">🔔<span class="notif-dot"></span></button>
+            <div class="notif-dropdown">
+              <div class="dropdown-label">Notifications</div>
+              <div class="notif-item"><strong>Exam updated:</strong> CS301 final schedule posted.</div>
+              <div class="notif-item"><strong>Alert:</strong> Class change for PHYS101 today.</div>
+            </div>
+          </div>
+          <div class="avatar-wrapper">
+            <div class="avatar" id="avatar-initials"></div>
+            <div class="avatar-dropdown" id="avatar-dropdown"></div>
+          </div>
+          <button class="btn-logout" id="btn-logout">Sign Out</button>
+        </div>
+      </nav>
+
+      <!-- OVERVIEW -->
+      <div class="subpage active" id="tab-overview">
+        <div class="content-area">
+          <div class="page-header"><h2 id="greeting"></h2><p id="overview-date"></p></div>
+          <div class="stats-row" id="stats-row"></div>
+          <div class="cards-grid">
+            <div class="card"><div class="card-head"><h3>Today's Schedule</h3><span class="tag" id="today-tag"></span></div><div class="card-body" id="today-schedule-body"></div></div>
+            <div class="card"><div class="card-head"><h3>Upcoming Exams</h3><span class="tag" id="exam-tag"></span></div><div class="card-body" id="upcoming-exams-body"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIMETABLE -->
+      <div class="subpage" id="tab-timetable">
+        <div class="content-area">
+          <div class="page-header"><h2>My Weekly Timetable</h2><p id="tt-subtitle"></p></div>
+          <div id="timetable-area"></div>
+        </div>
+      </div>
+
+      <!-- INSTRUCTORS -->
+      <div class="subpage" id="tab-instructors">
+        <div class="content-area">
+          <div class="page-header"><h2>My Instructors</h2><p>Contact details and office hours</p></div>
+          <div class="instructor-list" id="instructor-list"></div>
+        </div>
+      </div>
+
+      <!-- EXAMS -->
+      <div class="subpage" id="tab-exams">
+        <div class="content-area">
+          <div class="page-header"><h2>Exam Schedule</h2><p id="exam-subtitle"></p></div>
+          <div class="sec-tabs">
+            <button class="sec-tab active" data-exam="midterm">Midterm Exams</button>
+            <button class="sec-tab" data-exam="final">Final Exams</button>
+          </div>
+          <div class="tab-section active" id="exam-midterm-section"></div>
+          <div class="tab-section" id="exam-final-section"></div>
+        </div>
+      </div>
+
+      <div class="subpage" id="tab-ai">
+        <div class="content-area">
+          <div class="page-header"><h2>AI Assistant</h2><p>Personal help from your AcademIQ schedule and course data</p></div>
+          <div class="ai-shell" id="ai-assistant">
+            <div class="ai-chat">
+              <div class="ai-log" id="ai-log"></div>
+              <div class="ai-input-row">
+                <textarea id="ai-input" placeholder="Ask about your classes, instructors, rooms, or schedule"></textarea>
+                <button id="ai-send" type="button">Ask</button>
+              </div>
+            </div>
+            <aside class="ai-side">
+              <h3>Try asking</h3>
+              <div class="ai-suggestions" id="ai-suggestions"></div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/semester.js"></script>
+  <script src="../js/student.js"></script>
+  <script src="../js/aiAssistant.js"></script>
+</body>
+</html>

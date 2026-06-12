@@ -1,0 +1,134 @@
+/* Instructor role styling */
+
+/* Availability grid – dropdown select styling */
+.avail-select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 4px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: "DM Sans", sans-serif;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  text-align-last: center;
+}
+
+.avail-select.status-available {
+  background: rgba(76, 88, 62, 0.15);
+  color: #323b29;
+}
+
+.avail-select.status-inclass {
+  background: rgba(184, 76, 76, 0.12);
+  color: #b84c4c;
+}
+
+.avail-select.status-lunch {
+  background: rgba(230, 140, 20, 0.15);
+  color: #7a4f00;
+}
+
+.avail-select.status-meeting {
+  background: rgba(74, 111, 165, 0.15);
+  color: #2a4f85;
+}
+
+.avail-select.status-office {
+  background: rgba(201, 168, 76, 0.18);
+  color: #7a5c10;
+}
+
+.avail-select.status-offcampus {
+  background: rgba(110, 110, 130, 0.15);
+  color: #505060;
+}
+
+/* Feedback issues */
+.issue-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--card);
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  user-select: none;
+}
+
+.issue-item:hover,
+.issue-item.checked {
+  border-color: var(--olive);
+  background: var(--olive-faint);
+}
+
+.issue-item input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--olive);
+  cursor: pointer;
+}
+
+/* Student cards */
+.student-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  transition: box-shadow 0.15s;
+}
+
+.student-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Feedback page – severity buttons */
+.sev-btn {
+  padding: 8px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s,
+    color 0.18s;
+}
+.sev-btn:hover {
+  border-color: var(--olive);
+  color: var(--olive-dark);
+}
+.sev-btn.sev-active {
+  background: var(--olive-faint);
+  border-color: var(--olive);
+  color: var(--olive-dark);
+  font-weight: 600;
+}
+
+#page-instructor .badge-pill {
+  background: #d7e4f4;
+  color: #29456c;
+}
+
+#page-instructor .avatar {
+  background: #355987;
+  border-color: #9eb9db;
+}
+
+#page-instructor .stat-card::before {
+  background: #355987;
+}
